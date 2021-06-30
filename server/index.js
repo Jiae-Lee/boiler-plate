@@ -3,9 +3,9 @@ const app = express()
 const port = 5000
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const config = require('./server/config/key');
-const { auth } = require("./server/middleware/auth");
-const { User } = require("./server/models/User");
+const config = require('./config/key');
+const { auth } = require("./middleware/auth");
+const { User } = require("./models/User");
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
@@ -21,6 +21,11 @@ app.get('/', (req, res) => {
   res.send('리액트')
 })
 
+app.get('/api/hello', (req, res) => {
+  res.send("안녕하세요")
+})
+
+//회원가입
 app.post("/api/user/register", (req, res) => {
   //회원가입 시 필요한 정보를 client에서 가져와 데이터베이스에 넣기
   const user = new User(req.body)
@@ -34,7 +39,7 @@ app.post("/api/user/register", (req, res) => {
 })
 
 //로그인
-app.post("/login", (req, res) => {
+app.post("/api/user/login", (req, res) => {
   User.findOne({ email: req.body.email }, (err, user) => {
     //이메일이 db에 있는지 확인
     if(!user) {
@@ -59,7 +64,7 @@ app.post("/login", (req, res) => {
         res.cookie("x_auth", user.token)
         .status(200)
         .json({
-          success: true,
+          loginSuccess: true,
           userId: user._id
         })
       })

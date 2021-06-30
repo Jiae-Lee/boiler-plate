@@ -14,11 +14,13 @@ import RegisterPage from './views/RegisterPage/RegisterPage'
 function App() {
   return (
     <div>
-      <Route exact path="/" component={ Home } />
-      <Route path="/menu" component={ Menu } />
-      <Route path="/landing" component={ LandingPage } />
-      <Route path="/login" component={ LoginPage } />
-      <Route path="/register" component={ RegisterPage } />
+      <Router>
+        <Route exact path="/" component={ Home } />
+        <Route path="/menu" component={ Menu } />
+        <Route path="/landing" component={ LandingPage } />
+        <Route path="/login" component={ LoginPage } />
+        <Route path="/register" component={ RegisterPage } />
+      </Router>
     </div>
   );
 }

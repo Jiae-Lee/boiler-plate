@@ -41,7 +41,7 @@ function RegisterPage(props) {
             name: Name
         }
 
-        // Axios.post('/api/user/register', body)
+        // Axios.post('/api/users/register', body)
 
         dispatch(registerUser(body))
             .then(response => {

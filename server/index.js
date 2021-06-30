@@ -26,7 +26,7 @@ app.get('/api/hello', (req, res) => {
 })
 
 //회원가입
-app.post("/api/user/register", (req, res) => {
+app.post("/api/users/register", (req, res) => {
   //회원가입 시 필요한 정보를 client에서 가져와 데이터베이스에 넣기
   const user = new User(req.body)
 
@@ -39,7 +39,7 @@ app.post("/api/user/register", (req, res) => {
 })
 
 //로그인
-app.post("/api/user/login", (req, res) => {
+app.post("/api/users/login", (req, res) => {
   User.findOne({ email: req.body.email }, (err, user) => {
     //이메일이 db에 있는지 확인
     if(!user) {

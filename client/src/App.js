@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link 
+  // Link 
 } from 'react-router-dom';
 
 import LandingPage from './components/views/LandingPage/LandingPage'
@@ -16,9 +16,9 @@ function App() {
     <Router>
       <div>
         <Switch>
-          <Route exact path="/" component={ Auth(LandingPage, null) } />
-          <Route path="/login" component={ Auth(LoginPage, false) } />
-          <Route path="/register" component={ Auth(RegisterPage, false) } />
+          <Route exact path="/" component={Auth(LandingPage, null )  } />
+          <Route exact path="/login" component={Auth(LoginPage, false) } />
+          <Route exact path="/register" component={Auth(RegisterPage, false)} />
         </Switch>
       </div>
     </Router>
